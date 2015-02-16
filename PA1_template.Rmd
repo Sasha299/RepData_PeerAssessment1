@@ -160,7 +160,9 @@ Using the play dataset with no missing (NA) values we are analysing for any diff
 2. Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). See the README file in the GitHub repository to see an example of what this plot should look like using simulated data.
 
 ```{r, echo=TRUE}
-panel.xyplot(x=playWeek$interval, y=playWeek$steps, x type='l', axes=FALSE, xlab="", ylab="Global Active Power (kilowatts)")
+d<-ddply(playWeek, c("interval", "day"), summarize, steps=mean(steps, na.rm=TRUE))
+
+ggplot(d, aes(x=interval, y=steps))+geom_line(color="red")+facet_wrap(~ day, nrow=2, ncol=1)+labs(x="Intervals", y="Average Steps")+theme_bw()
 
 
 ```
