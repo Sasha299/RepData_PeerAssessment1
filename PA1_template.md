@@ -1,4 +1,4 @@
-# Peer Review Assignment 1
+# Reproducible Research Peer Review Assignment 1
 Sasha299  
 Saturday, May 17, 2015  
 
