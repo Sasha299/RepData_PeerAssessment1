@@ -1,8 +1,10 @@
 ---
 title: "Peer Review Assignment 1"
 author: "SWD"
-date: "Saturday, February 14, 2015"
-output: html_document
+date: "Saturday, May 16, 2015"
+output:
+  html_document:
+    keep_md: yes
 ---
 
 ##Introduction
@@ -63,6 +65,7 @@ head(activity)
 
 ##What is mean total number of steps taken per day?
 To answer this question we are ignoring the missing values in the dataset
+
 1. We now summarize the dataset by daily steps. The first 6 values are shown.
 
 ```{r, echo=TRUE}
@@ -162,7 +165,7 @@ Using the play dataset with no missing (NA) values we are analysing for any diff
 ```{r, echo=TRUE}
 d<-ddply(playWeek, c("interval", "day"), summarize, steps=mean(steps, na.rm=TRUE))
 
-ggplot(d, aes(x=interval, y=steps))+geom_line(color="red")+facet_wrap(~ day, nrow=2, ncol=1)+labs(x="Intervals", y="Average Steps")+theme_bw()
+ggplot(d, aes(x=interval, y=steps))+geom_line(color="red", size=1)+facet_wrap(~ day, nrow=2, ncol=1)+labs(x="Intervals", y="Average Steps")+theme_bw()
 
 
 ```
